@@ -1,7 +1,7 @@
 import pymupdf
 from pdfCropMargins import crop
 
-input_pdf = "L8.pdf"
+input_pdf = "src.pdf"
 # width 842pt height 595pt
 
 src = pymupdf.open(input_pdf)
