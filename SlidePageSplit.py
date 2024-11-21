@@ -85,7 +85,7 @@ def crop_box_coord(crop_type, width = _a4_page_width, height = _a4_page_height):
 
 def main():
     if len(sys.argv) != 2:
-        print("Usage: python crop_pdf.py <input_pdf>")
+        print("Usage: python SlidePageSplit.py <input_pdf>")
         sys.exit(1)
 
     input_pdf = sys.argv[1]

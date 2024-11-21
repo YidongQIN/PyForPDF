@@ -6,7 +6,7 @@
 import pymupdf
 from pdfCropMargins import crop
 
-input_pdf = "L1.pdf"
+input_pdf = "L11.pdf"
 
 src = pymupdf.open(input_pdf)
 doc = pymupdf.open()  # empty output PDF
