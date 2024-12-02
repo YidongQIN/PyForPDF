@@ -55,10 +55,10 @@ def slide_2_2(width, height):
     return slide_crop_boxes
 
 def slide_2_1(width, height):
-    _w_margin_ratio = 0.08
-    _h_margin_ratio = 0.10
+    _w_margin_ratio = 0.01
+    _h_margin_ratio = 0.01
     # _w_space_ratio = 0.10
-    _h_space_ratio = 0.15
+    _h_space_ratio = 0.02
     slide_crop_boxes = [
         [width * (_w_margin_ratio), height * (_h_margin_ratio),
          width * (1-_w_margin_ratio), height * (0.5-0.5*_h_space_ratio)],  # 上
@@ -85,7 +85,7 @@ def crop_box_coord(crop_type, width = _a4_page_width, height = _a4_page_height):
 
 def main():
     if len(sys.argv) != 2:
-        print("Usage: python SlidePageSplit.py <input_pdf>")
+        print("Usage: python SlideSplit.py <input_pdf>")
         sys.exit(1)
 
     input_pdf = sys.argv[1]
@@ -140,7 +140,7 @@ def main():
     input_doc.close()
 
     # 裁剪边框
-    crop(["-p 0", "-s", "--replaceOriginal", output_pdf])
+    crop(["-p 0", "-s", "-u", "--replaceOriginal", output_pdf])
     print(f"PDF cropped and saved as {output_pdf}")
 
 if __name__ == "__main__":
