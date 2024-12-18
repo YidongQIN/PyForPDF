@@ -16,8 +16,8 @@ def measure_pdf(input_doc):
 
 def slide_3_2(width, height):
     _w_margin_ratio = 0.08
-    _h_margin_ratio = 0.09
-    _w_space_ratio = 0.06
+    _h_margin_ratio = 0.095
+    _w_space_ratio = 0.065
     _h_space_ratio = 0.06
     _w_slide_ratio = 0.40
     _h_slide_ratio = 0.23
@@ -140,7 +140,8 @@ def main():
     input_doc.close()
 
     # 裁剪边框
-    crop(["-p 0", "-s", "-u", "--replaceOriginal", output_pdf])
+    #crop(["-p 0", "-s", "-u", "--replaceOriginal", output_pdf])
+    crop(["-p 0", "-s", "--replaceOriginal", output_pdf])
     print(f"PDF cropped and saved as {output_pdf}")
 
 if __name__ == "__main__":
