@@ -11,7 +11,7 @@ def measure_pdf(input_doc):
     page_rect = page.rect
     width = page_rect.width
     height = page_rect.height
-    print(f"Page dimensions:\n{page_rect.width} x {page_rect.height} points")
+    print(f"Page dimensions:\n{width} x {height} points")
     return width, height
 
 def slide_3_2(width, height):
