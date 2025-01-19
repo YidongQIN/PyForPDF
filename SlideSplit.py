@@ -37,6 +37,21 @@ def slide_3_2(width, height):
     ]
     return slide_crop_boxes
 
+def slide_3_1(width, height):
+    _w_margin_ratio = 0.08
+    _h_margin_ratio = 0.13
+    _w_slide_ratio = 0.42
+    _h_slide_ratio = 0.21
+    slide_crop_boxes = [
+        [width * (_w_margin_ratio), height * (_h_margin_ratio),
+         width * (_w_slide_ratio+_w_margin_ratio), height * (_h_slide_ratio+_h_margin_ratio)],  # 左上
+        [width * (_w_margin_ratio), height * (0.5-0.5*_h_slide_ratio),
+         width * (_w_slide_ratio+_w_margin_ratio), height * (0.5+0.5*_h_slide_ratio)],  # 左中
+        [width * (_w_margin_ratio), height * (1-_h_margin_ratio-_h_slide_ratio),
+         width * (_w_slide_ratio+_w_margin_ratio), height * (1-_h_margin_ratio)],  # 左下
+    ]
+    return slide_crop_boxes
+
 def slide_2_2(width, height):
     _w_margin_ratio = 0.10
     _h_margin_ratio = 0.10
@@ -75,6 +90,8 @@ def crop_box_coord(crop_type, width = _a4_page_width, height = _a4_page_height):
         slide_coord = slide_2_2(width, height)
     elif crop_type == "c":
         slide_coord = slide_2_1(width, height)
+    elif crop_type == "d":
+        slide_coord = slide_3_1(width, height)
     else:
         print("Invalid input. Please enter numeric values.")
 
@@ -103,6 +120,7 @@ def main():
     print("a. 6 Slides (3 rows 2 columns)")
     print("b. 4 Slides (2 rows 2 columns)")
     print("c. 2 Slides (2 rows 1 columns)")
+    print("d. 3 Slides (3 rows 1 columns)")
     try:
         crop_type = input("Slides Layout:\n")
         # crop_width = float(input("Width: "))
@@ -140,8 +158,8 @@ def main():
     input_doc.close()
 
     # 裁剪边框
-    # crop(["-p 0", "-s", "-u", "--replaceOriginal", output_pdf])
-    crop(["-p 0", "-s", "--replaceOriginal", output_pdf])
+    crop(["-p 0", "-s", "-u", "--replaceOriginal", output_pdf])
+    # crop(["-p 0", "-s", "--replaceOriginal", output_pdf])
     print(f"PDF cropped and saved as {output_pdf}")
 
 if __name__ == "__main__":
