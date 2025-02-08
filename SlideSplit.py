@@ -39,9 +39,9 @@ def slide_3_2(width, height):
 
 def slide_3_1(width, height):
     _w_margin_ratio = 0.08
-    _h_margin_ratio = 0.13
-    _w_slide_ratio = 0.42
-    _h_slide_ratio = 0.21
+    _h_margin_ratio = 0.14# 0.13
+    _w_slide_ratio = 0.40# 0.42
+    _h_slide_ratio = 0.205
     slide_crop_boxes = [
         [width * (_w_margin_ratio), height * (_h_margin_ratio),
          width * (_w_slide_ratio+_w_margin_ratio), height * (_h_slide_ratio+_h_margin_ratio)],  # 左上
@@ -158,8 +158,8 @@ def main():
     input_doc.close()
 
     # 裁剪边框
-    crop(["-p 0", "-s", "-u", "--replaceOriginal", output_pdf])
-    # crop(["-p 0", "-s", "--replaceOriginal", output_pdf])
+    # crop(["-p 0", "-s", "-u", "--replaceOriginal", output_pdf])
+    crop(["-p 0", "-s", "--replaceOriginal", output_pdf])
     print(f"PDF cropped and saved as {output_pdf}")
 
 if __name__ == "__main__":
